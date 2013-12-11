@@ -8,17 +8,17 @@ public class TestBanque {
 	final double tauxLDD	=1.75;
 	final double tauxLEP	=2.25;
 	
-	final int plafondLA	=15300;
-	final int plafondLDD	=6000;
-	final int plafondLEP	=7700;
+	final double plafondLA	=15300;
+	final double plafondLDD	=6000;
+	final double plafondLEP	=7700;
 
 	final boolean accesLA	=false;
 	final boolean accesLDD	=false;
 	final boolean accesLEP	=true;
 
-	final int ressourcesLA	=0;
-	final int ressourcesLDD	=0;
-	final int ressourcesLEP	=757;
+	final double ressourcesLA	=0;
+	final double ressourcesLDD	=0;
+	final double ressourcesLEP	=757;
 
 
 	/**
@@ -50,9 +50,9 @@ public class TestBanque {
 		
 		verifier(0.0,CC.taux, "taux incorrect");
 		verifier(false,CC.plafondDepot, "Condition de plafond incorrecte");
-		verifier(0,CC.montantPlafond, "montant plafond incorrect");
+		verifier(Double.MAX_VALUE,CC.montantPlafond, "montant plafond incorrect");
 		verifier(false,CC.accesCompte, "Condition d'accès incorrecte");
-		verifier(0,CC.montantRessources,"montant de ressources incorrect");
+		verifier(Double.MAX_VALUE,CC.montantRessources,"montant de ressources incorrect");
 
 		TypeCompte LA = new TypeCompte(tauxLA,true,plafondLA,accesLA,ressourcesLA);
 		
@@ -77,7 +77,33 @@ public class TestBanque {
 		verifier(plafondLEP,LEP.montantPlafond, "montant plafond incorrect");
 		verifier(accesLEP,LEP.accesCompte, "Condition d'accès incorrecte");
 		verifier(ressourcesLEP,LEP.montantRessources,"montant de ressources incorrect");
+
+		/**
+		* test des méthodes demandées pour le type de compte
+		*/
+
+		verifier(Double.MAX_VALUE,CC.montantPlafond,"Valeur incorrecte");
+		verifier(plafondLA,LA.montantPlafond,"Valeur incorrecte");
+		verifier(plafondLDD,LDD.montantPlafond,"Valeur incorrecte");
+		verifier(plafondLEP,LEP.montantPlafond,"Valeur incorrecte");
+
+		verifier(Double.MAX_VALUE,CC.montantRessources,"Valeur incorrecte");
+		verifier(ressourcesLA,LA.montantRessources,"Valeur incorrecte");
+		verifier(ressourcesLDD,LDD.montantRessources,"Valeur incorrecte");
+		verifier(ressourcesLEP,LEP.montantRessources,"Valeur incorrecte");
 	}
+	/**
+	* test constructeurs des types de compte
+	*/	
+
+	/**
+	* test constructeurs des types de compte
+	*/
+
+	/**
+	* test constructeurs des types de compte
+	*/
+
 	/**
 	 * Lancement des tests
 	 * 

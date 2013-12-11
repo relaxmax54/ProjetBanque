@@ -21,23 +21,23 @@ class TypeCompte{
 
 	public double taux;
 	public boolean plafondDepot;
-	public int montantPlafond;	
+	public double montantPlafond;	
 	public boolean accesCompte;
-	public int montantRessources;
+	public double montantRessources;
 	
 	/**
 	*constructeurs des types de comptes
 	*/
 	public TypeCompte(){
 		//Compte Courant
-		this.taux		=0;
+		this.taux		=0.0;
 		this.plafondDepot	=false;
-		this.montantPlafond	=0;
+		this.montantPlafond	=Double.MAX_VALUE;
 		this.accesCompte	=false;
-		this.montantRessources	=0;
+		this.montantRessources	=Double.MAX_VALUE;
 	}
 	// Autres comptes :
-	public TypeCompte(double t,boolean p,int m,boolean a,int r){
+	public TypeCompte(double t,boolean p,double m,boolean a,double r){
 		this.taux		=t;
 		this.plafondDepot	=p;
 		this.montantPlafond	=m;
@@ -49,12 +49,23 @@ class TypeCompte{
 	* maximale qui peut etre depose
 	* @return plafond de depot (Double.MAX_VALUE si "illimite")
 	*/
-
+	public double retourneMontantMaximumPlafond(TypeCompte tc){
+		if (tc.plafondDepot)
+			return tc.montantPlafond;
+		else		
+			return Double.MAX_VALUE;
+	}
 	/**
 	* methode par laquelle un type de compte indique le plafond
 	* maximal de revenus (en fait d’impot sur le revenu)
 	* impose a l’ouverture du compte
 	* @return plafond de revenus (Double.MAX_VALUE si "illimite")
 	*/
-
+	public double retourneMontantRessourcesMinimum(TypeCompte tc){
+		if (tc.accesCompte)
+			return tc.montantRessources;
+		else
+			return Double.MAX_VALUE;
+	}
 }
+
