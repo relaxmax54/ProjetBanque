@@ -30,18 +30,18 @@ class TypeCompte{
 	*/
 	public TypeCompte(){
 		//Compte Courant
-		this.taux		=0.0;
-		this.plafondDepot	=false;
-		this.montantPlafond	=Double.MAX_VALUE;
-		this.accesCompte	=false;
+		this.taux				=0.0;
+		this.plafondDepot		=false;
+		this.montantPlafond		=Double.MAX_VALUE;
+		this.accesCompte		=false;
 		this.montantRessources	=Double.MAX_VALUE;
 	}
 	// Autres comptes :
 	public TypeCompte(double t,boolean p,double m,boolean a,double r){
-		this.taux		=t;
-		this.plafondDepot	=p;
-		this.montantPlafond	=m;
-		this.accesCompte	=a;
+		this.taux				=t;
+		this.plafondDepot		=p;
+		this.montantPlafond		=m;
+		this.accesCompte		=a;
 		this.montantRessources	=r;
 	}
 	/**
