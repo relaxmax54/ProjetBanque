@@ -9,15 +9,15 @@
 class TypeCompte{
     //compteur de comptes général
     
-    public static int codeInterne	=-1;
+    public static int codeInterne =-1;
     
     // attributs
-    private int compteur;
-    private double taux;
-    private boolean plafondDepot;
-    private double montantPlafond;	
-    private boolean accesCompte;
-    private double montantRessources;
+    public int compteur;
+    public double taux;
+    public boolean plafondDepot;
+    public double montantPlafond;	
+    public boolean accesCompte;
+    public double montantRessources;
     
     /**
      *constructeurs des types de comptes
@@ -29,12 +29,6 @@ class TypeCompte{
 	this.montantPlafond		=m;
 	this.accesCompte		=a;
 	this.montantRessources		=r;
-    }
-    /**
-     *permet d'incrémenter les compteur pour les types de compte
-     */
-    public void incrementerCompteur(){
-	this.compteur+=1;
     }
     /**
      * methode par laquelle un type de compte indique la somme
@@ -53,7 +47,7 @@ class TypeCompte{
      * impose a l’ouverture du compte
      * @return plafond de revenus (Double.MAX_VALUE si "illimite")
      */
-    public double montantMinimumRessources(TypeCompte tc){
+    public double montantMinimumRessources(){
 	if ((this!=null) && (this.accesCompte))
 	    return this.montantRessources;
 	else

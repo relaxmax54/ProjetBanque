@@ -31,20 +31,20 @@ class Compte{
      */
     public Compte(TypeCompte tc,Client cl){
 	//on incrémente le nombre total de comptes créés
-	tc.codeInterne+=1;
+	TypeCompte.codeInterne+=1;
 	
 	if(tc!=null && cl!=null){
 	    this.type=tc;
-	    tc.incrementerCompteur();
+	    tc.compteur+=1;
+	    this.numeroDeCompte=TypeCompte.codeInterne;
 	}else{
 	    this.type=null;
 	    this.numeroDeCompte=-1;
 	}
-	this.numeroDeCompte=TypeCompte.codeInterne;
 	this.titulaire=cl;
 	//
 	//ilfaut encore ajourter le compte au tableau
-	//il faudra rendre le codeInterne private
+	//il faudra rendre tous les attributs TyptCompte publics
 	//
 	this.solde=0;
     }
