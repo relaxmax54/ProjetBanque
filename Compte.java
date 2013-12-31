@@ -1,4 +1,4 @@
-class Comptes{
+class Compte{
 //attributs
   private Client titulaire;
   private TypeCompte type;
@@ -29,18 +29,15 @@ class Comptes{
 * @param tc type de compte désiré (si null, alors simple compte chèque)
 * @param cl client titulaire du compte (si null, alors titulaire est nul, type de compte est nul, solde initial est nul et numéro de compte est -1)
 */
-  public Comptes(TypeCompte tc,Client cl){
+  public Compte(TypeCompte tc,Client cl){
     if(cl==null){
       this.type=null;
-      this.titulaire=null;
       this.numeroDeCompte=-1;
     }else{
-      this.titulaire=cl;
-      if(tc==null){
-	this.type=tc;
-	this.numeroDeCompte=TypeCompte.codeInterne;
-      }
-      this.solde=0;
+      this.type=tc;
+      this.numeroDeCompte=TypeCompte.codeInterne;
     }
+    this.titulaire=cl;
+    this.solde=0;
   }
 }

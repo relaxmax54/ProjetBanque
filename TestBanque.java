@@ -4,7 +4,7 @@
 public class TestBanque {
 
 	//caractéristiques réglementaires des différents livrets
-	final double tauxLA		=1.75;
+	final double tauxLA	=1.75;
 	final double tauxLDD	=1.75;
 	final double tauxLEP	=2.25;
 	
@@ -102,15 +102,16 @@ public class TestBanque {
 		Compte ccc=new Compte(null,c);
 		verifier(c,ccc.getTitulaire(),"Mauvais titulaire");
 		verifier(0.0,ccc.getSolde(),"Mauvais solde de départ");
-		verifier(0,ccc.getType().taux,"Mauvais % d'intérêts");
-		verifier(false,ccc.getType().plafondDepot,"Mauvaise condition de plafond");
-		verifier(Double.MAX_VALUE,ccc.getType().montantPlafond,"Mauvais montant de plafond");
-		verifier(false,ccc.getType().accesCompte,"Mauvaise condition de ressources");
-		verifier(Double.MAX_VALUE,ccc.getType().montantRessources,"Mauvais montant de condition de ressources");
+		verifier(null,ccc.getType(),"Mauvais type de compte");
+		verifier(0.0,ccc.getType().taux,"Mauvais taux");
+		//verifier(false,ccc.getType().plafondDepot,"Mauvaise condition de plafond");
+		//verifier(Double.MAX_VALUE,ccc.getType().montantPlafond,"Mauvais montant de plafond");
+		//verifier(false,ccc.getType().accesCompte,"Mauvaise condition de ressources");
+		//verifier(Double.MAX_VALUE,ccc.getType().montantRessources,"Mauvais montant de condition de ressources");
 		// nombre de comptes courant existant a été incrémenté
-		verifier(1,TypeCompte.compteurCC,"Mauvaise incrémentation des comptes CC");
+		//verifier(1,TypeCompte.compteurCC,"Mauvaise incrémentation des comptes CC");
 		// codeinterne des comptes a bien été incrémenté
-		verifier(1,TypeCompte.codeInterne,"Mauvaise incrémentation des comptes en général");
+		//verifier(1,TypeCompte.codeInterne,"Mauvaise incrémentation des comptes en général");
 	}
 	/**
 	* test constructeurs des types de compte
