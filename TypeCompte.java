@@ -1,24 +1,18 @@
 /**
 * classe qui répertorie les types de comptes :
-* CC	:	compte courant
+* null	:	compte courant
+* LA	:	Livret A
 * LEP	:	Livret d'épargne Populaire
 * LDD	:	Livret de Développement Durable
 *
 */
 class TypeCompte{
-	//compteur de comptes crées pour identification unique par type de compte
-	
-	public static int compteurCC	=0;
-	public static int compteurLA	=0;
-	public static int compteurLDD	=0;
-	public static int compteurLEP	=0;
-
 	//compteur de comptes général
 
-	public static int codeInterne	=0;
+	public static int codeInterne	=-1;
 
 	// attributs
-
+	public int compteur=0;
 	public double taux;
 	public boolean plafondDepot;
 	public double montantPlafond;	
@@ -28,21 +22,13 @@ class TypeCompte{
 	/**
 	*constructeurs des types de comptes
 	*/
-	public TypeCompte(){
-		//Compte Courant
-		this.taux				=0.0;
-		this.plafondDepot		=false;
-		this.montantPlafond		=Double.MAX_VALUE;
-		this.accesCompte		=false;
-		this.montantRessources	=Double.MAX_VALUE;
-	}
-	// Autres comptes :
 	public TypeCompte(double t,boolean p,double m,boolean a,double r){
-		this.taux				=t;
+		this.compteur			=0;
+		this.taux			=t;
 		this.plafondDepot		=p;
 		this.montantPlafond		=m;
 		this.accesCompte		=a;
-		this.montantRessources	=r;
+		this.montantRessources		=r;
 	}
 	/**
 	* methode par laquelle un type de compte indique la somme
