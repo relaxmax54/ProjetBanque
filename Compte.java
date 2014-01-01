@@ -67,4 +67,19 @@ class Compte{
 	    return somme-this.type.montantMaximumPlafond()-ancienSolde;
 	}
     }
+    /**
+     * methode de retrait d’argent depuis le compte (decouvert interdit)
+     * @param somme quantite d’argent a retirer du compte
+     * @return quantite d’argent effectivement retiree du compte et donnee au client
+     */
+    public double retrait(double somme){
+	if (this.solde-somme>=0){
+	    this.solde-=somme;
+	    return somme;
+	}else{
+	    double ancienSolde=this.solde;
+	    this.solde=0;
+	    return ancienSolde;
+	}
+    }
 }

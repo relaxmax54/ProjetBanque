@@ -82,24 +82,26 @@ public class TestBanque {
 	verifier(0,TypeCompte.codeInterne,"Mauvaise incrémentation des comptes en général");
     }
     /**
-     * test constructeurs des types de compte
+     * test des méthodes pour le dép^ot ou le retrait d'argent sur un compte
      */
-    public void testdepot(){
+    public void testMouvementsDeCompte(){
 	//création d'un nouveau compte courant
 	Client c=new Client("Maxime","FRIEH");
 	Compte cc=new Compte(TypeCompte.CC,c);
 	Compte lep=new Compte(TypeCompte.LEP,c);
 	Compte ldd=new Compte(TypeCompte.LDD,c);
 	Compte la=new Compte(TypeCompte.LA,c);
+	// test de la méthode de depot d'argent
 	verifier(0.0,cc.depot(20000),"Mauvais montant retourné");
 	verifier(12300.0,lep.depot(20000),"Mauvais montant retourné");
 	verifier(14000.0,ldd.depot(20000),"Mauvais montant retourné");
 	verifier(4700.0,la.depot(20000),"Mauvais montant retourné");
+	// test de la méthode de retrait d'argent
+	verifier(20000.0,cc.retrait(20000),"Mauvais montant retourné");
+	verifier(7700.0,lep.retrait(20000),"Mauvais montant retourné");
+	verifier(6000.0,ldd.retrait(20000),"Mauvais montant retourné");
+	verifier(15300.0,la.retrait(20000),"Mauvais montant retourné");
     }
-    /**
-     * test constructeurs des types de compte
-     */
-    
     /**
      * Lancement des tests
      * 
