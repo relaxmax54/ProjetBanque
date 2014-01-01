@@ -39,6 +39,7 @@ class TypeCompte{
     public static final TypeCompte LEP = new TypeCompte(TypeCompte.tauxLEP,true,TypeCompte.plafondLEP,TypeCompte.accesLEP,TypeCompte.ressourcesLEP);
     public static final TypeCompte LDD = new TypeCompte(TypeCompte.tauxLDD,true,TypeCompte.plafondLDD,TypeCompte.accesLDD,TypeCompte.ressourcesLDD);
     public static final TypeCompte LA = new TypeCompte(TypeCompte.tauxLA,true,TypeCompte.plafondLA,TypeCompte.accesLA,TypeCompte.ressourcesLA);	
+    public static final TypeCompte CC = null;	
     
     /**
      *constructeurs des types de comptes

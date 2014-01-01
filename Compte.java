@@ -49,4 +49,20 @@ class Compte{
 	this.titulaire=cl;
 	this.solde=0;
     }
+    /**
+     * methode de depot d’argent sur le compte (jusqu’au plafond eventuel)
+     * @param somme quantite d’argent a deposer sur le compte
+     * @return quantite d’argent eventuellement non deposee sur le compte (a rendre
+     * au client)
+     */
+    public double depot(double somme){
+	double quantite;
+	if (this.solde+somme<=this.type.montantMaximumPlafond()){
+	    this.solde+=somme;
+	    return 0;
+	}else{
+	    this.solde=this.type.montantMaximumPlafond();
+	    return somme-this.type.montantMaximumPlafond()-this.solde;
+	}
+   }
 }
