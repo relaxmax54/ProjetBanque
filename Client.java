@@ -2,7 +2,7 @@
  * Classe Client
  */
 public class Client{
-    final int NB_MAX_COMPTES=10;
+    final static int NB_MAX_COMPTES=10;
     
     //attributs
     String nom,prenom;

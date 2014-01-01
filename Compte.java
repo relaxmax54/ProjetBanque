@@ -33,19 +33,20 @@ class Compte{
 	//on incrémente le nombre total de comptes créés
 	TypeCompte.codeInterne+=1;
 	
-	if(tc!=null && cl!=null){
-	    this.type=tc;
-	    tc.compteur+=1;
-	    this.numeroDeCompte=TypeCompte.codeInterne;
+	if(cl!=null){
+	    if (cl.nb_comptes<Client.NB_MAX_COMPTES){
+		this.type=tc;
+		this.numeroDeCompte=TypeCompte.codeInterne;
+		cl.nb_comptes+=1;
+		cl.comptes[cl.nb_comptes-1]=TypeCompte.codeInterne;
+	    }
+	    if (tc!=null)
+		tc.compteur+=1;
 	}else{
 	    this.type=null;
 	    this.numeroDeCompte=-1;
 	}
 	this.titulaire=cl;
-	//
-	//ilfaut encore ajourter le compte au tableau
-	//il faudra rendre tous les attributs TyptCompte publics
-	//
 	this.solde=0;
     }
 }

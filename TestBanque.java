@@ -84,7 +84,9 @@ public class TestBanque {
 		verifier(c,cc.getTitulaire(),"Mauvais titulaire");
 		verifier(0.0,cc.getSolde(),"Mauvais solde de départ");
 		verifier(null,cc.getType(),"Mauvais type de compte");
-		verifier(-1,cc.getNumeroDeCompte(),"Mauvais numéro de compte");
+		verifier(0,cc.getNumeroDeCompte(),"Mauvais numéro de compte");
+		verifier(0,c.comptes[0],"Mauvais numéro de compte dans le tableau");
+		verifier(1,c.nb_comptes,"Mauvais nombre de comptes ouverts");
 		//Tests impossibles car compilateur n'aime pas appliquer des méthodes à un objet null
 		//verifier(Double.MAX_VALUE,cc.getType().montantMinimumRessources(),"Mauvais montant de condition de ressources");
 		//verifier(Double.MAX_VALUE,cc.getType().montantMaximumPlafond(),"Mauvais montant de plafond");
