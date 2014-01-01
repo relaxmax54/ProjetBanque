@@ -2,6 +2,7 @@
  * Classe Client
  */
 public class Client{
+    
     final static int NB_MAX_COMPTES=10;
     
     //attributs
