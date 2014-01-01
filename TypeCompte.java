@@ -103,3 +103,4 @@ class TypeCompte{
     }
 }
 // quel intéret pour montantMinimumRessources et montantMaximumPlafond ?
+// attributs TypeCompte à mettre en final ?

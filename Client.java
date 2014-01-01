@@ -33,4 +33,19 @@ public class Client{
     public void declarerImpots(int IR){
 	this.impots=IR;
     }
+    /**
+     * méthode qui permet d'ouvrir un nouveau compte de Type de Compte tc à partir d'une instance de la classe Client
+     *
+     * on vérifie que tc n'est pas null et dans ce cas seulement on s'assure que les critères sont cohérents avec l'ouverture de ce nouveau compte
+     * plafond de ressources : soit il est illimité soit le client en rempli les critères
+     * le nombre maximum de comptes : le nombre de comptes ouvert par le client ne dépasse pas le nombre maximum autorisé
+     * @param tc type de compte à ouvrir
+     */
+    public void ouvreNouveauCompte(TypeCompte tc) {
+	if (tc!=null) {
+	    if ((tc.plafondRevenus()==Double.MAX_VALUE) || (impots!=-1 && (impots<=tc.plafondRevenus()))) && (nb_comptes<NB_MAX_COMPTES) ) {
+	    comptes[nb_comptes]=new Compte(tc,this);
+	    nb_comptes=nb_comptes+1;
+	}
+    }
 }

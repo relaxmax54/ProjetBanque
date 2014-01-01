@@ -12,8 +12,8 @@ public class TestBanque {
     /**
      * test constructeur avec param
      */
-    public void testClient() {
-	//test
+    public void test_1_Client() {
+
 	Client c = new Client("Maxime","FRIEH");
  	
 	verifier("Maxime",c.prenom, "Prenom incorrect");
@@ -25,7 +25,7 @@ public class TestBanque {
     /**
      * test constructeurs des types de compte
      */
-    public void testTypesDeComptes(){
+    public void test_2_TypesDeComptes(){
 	verifier(0,TypeCompte.LA.compteur,"compteur non initialisé");
 	verifier(TypeCompte.tauxLA,TypeCompte.LA.taux, "taux incorrect");
 	verifier(true,TypeCompte.LA.plafondDepot, "Condition de plafond incorrecte");
@@ -47,7 +47,7 @@ public class TestBanque {
     /**
      * test montantMaximumPlafond
      */
-    public void testmontantMaximumPlafond(){
+    public void test_3_MontantMaximumPlafond(){
 	verifier(TypeCompte.plafondLA,TypeCompte.LA.montantMaximumPlafond(), "montant plafond incorrect");
 	verifier(TypeCompte.plafondLDD,TypeCompte.LDD.montantMaximumPlafond(), "montant plafond incorrect");
 	verifier(TypeCompte.plafondLEP,TypeCompte.LEP.montantMaximumPlafond(), "montant plafond incorrect");
@@ -58,7 +58,7 @@ public class TestBanque {
      *test tableau des comptes potentiels
      *@param montant_a_deposer : montant à déposer sur le compte
      */
-    public void testTableau(){
+    public void test_4_Tableau(){
 	verifier(null,TypeCompte.tableauDesComptesPotentiels(-1)[0],"Mauvais compte");
 	verifier(TypeCompte.LEP,TypeCompte.tableauDesComptesPotentiels(5500)[1],"Mauvais compte");
 	verifier(null,TypeCompte.tableauDesComptesPotentiels(8000)[2],"Mauvais compte");
@@ -67,7 +67,7 @@ public class TestBanque {
     /**
      * test constructeurs de comptes
      */	
-    public void testComptes(){
+    public void test_5_Comptes(){
 	//création d'un nouveau compte courant
 	Client c=new Client("Maxime","FRIEH");
 	Compte cc=new Compte(TypeCompte.CC,c);
@@ -84,7 +84,7 @@ public class TestBanque {
     /**
      * test des méthodes pour le dép^ot ou le retrait d'argent sur un compte
      */
-    public void testMouvementsDeCompte(){
+    public void test_6_MouvementsDeCompte(){
 	//création d'un nouveau compte courant
 	Client c=new Client("Maxime","FRIEH");
 	Compte cc=new Compte(TypeCompte.CC,c);
@@ -101,6 +101,35 @@ public class TestBanque {
 	verifier(7700.0,lep.retrait(20000),"Mauvais montant retourné");
 	verifier(6000.0,ldd.retrait(20000),"Mauvais montant retourné");
 	verifier(15300.0,la.retrait(20000),"Mauvais montant retourné");
+    }
+    /**
+     * test de la méthode d'ouverture de compte directement à partir du client
+     */
+    public void test_7_ouvreNouveauCompte(){
+	//création d'un nouveau client
+	Client c=new Client("Maxime","FRIEH");
+	c.declarerImpots(800);
+	//récupération des données de base
+	int code=TypeCompte.codeInterne;
+	int comptes = c.nb_comptes;
+
+	//tests
+
+	// vérifier bypass si tc null
+	c.ouvreNouveauCompte(null);
+	verifier(code,TypeCompte.codeInterne,"Incrémentation injustifiée");
+	verifier(comptes,c.nb_comptes,"Compte ajouté au tableau par erreur");
+
+	// vérifier bypass si critères non restectés
+	c.ouvreNouveauCompte(TypeCompte.LEP);
+	verifier(code,TypeCompte.codeInterne,"Incrémentation injustifiée");
+	verifier(comptes,c.nb_comptes,"Compte ajouté au tableau par erreur");
+
+	// vérifier création du compte si critères restectés
+	c.declarerImpots(700);
+	verifier(code+1,TypeCompte.codeInterne,"Absence d'incrémentation");
+	verifier(comptes+1,c.nb_comptes,"Compte non ajouté au tableau");
+	verifier(TypeCompte.LEP,c.getType(),"Mauvais type de compte ajouté");
     }
     /**
      * Lancement des tests
