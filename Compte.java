@@ -35,13 +35,15 @@ class Compte{
 	
 	if(cl!=null){
 	    if (cl.nb_comptes<Client.NB_MAX_COMPTES){
-		this.type=tc;
 		this.numeroDeCompte=TypeCompte.codeInterne;
 		cl.nb_comptes+=1;
 		cl.comptes[cl.nb_comptes-1]=TypeCompte.codeInterne;
 	    }
-	    if (tc!=null)
-		tc.compteur+=1;
+	    if (tc==null)
+		this.type=TypeCompte.CC;
+	    else
+		this.type=tc;
+	    this.type.compteur+=1;	    
 	}else{
 	    this.type=null;
 	    this.numeroDeCompte=-1;
@@ -56,13 +58,13 @@ class Compte{
      * au client)
      */
     public double depot(double somme){
-	double quantite;
 	if (this.solde+somme<=this.type.montantMaximumPlafond()){
 	    this.solde+=somme;
 	    return 0;
 	}else{
+	    double ancienSolde=this.solde;
 	    this.solde=this.type.montantMaximumPlafond();
-	    return somme-this.type.montantMaximumPlafond()-this.solde;
+	    return somme-this.type.montantMaximumPlafond()-ancienSolde;
 	}
-   }
+    }
 }

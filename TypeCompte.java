@@ -1,6 +1,6 @@
 /**
 * classe qui répertorie les types de comptes :
-* null	:	compte courant
+* CC	:	compte courant
 * LA	:	Livret A
 * LEP	:	Livret d'épargne Populaire
 * LDD	:	Livret de Développement Durable
@@ -39,7 +39,7 @@ class TypeCompte{
     public static final TypeCompte LEP = new TypeCompte(TypeCompte.tauxLEP,true,TypeCompte.plafondLEP,TypeCompte.accesLEP,TypeCompte.ressourcesLEP);
     public static final TypeCompte LDD = new TypeCompte(TypeCompte.tauxLDD,true,TypeCompte.plafondLDD,TypeCompte.accesLDD,TypeCompte.ressourcesLDD);
     public static final TypeCompte LA = new TypeCompte(TypeCompte.tauxLA,true,TypeCompte.plafondLA,TypeCompte.accesLA,TypeCompte.ressourcesLA);	
-    public static final TypeCompte CC = null;	
+    public static final TypeCompte CC = new TypeCompte(0.0,false,Double.MAX_VALUE,false,Double.MAX_VALUE);
     
     /**
      *constructeurs des types de comptes
@@ -102,3 +102,4 @@ class TypeCompte{
 	return tableau;
     }
 }
+// quel intéret pour montantMinimumRessources et montantMaximumPlafond ?

@@ -70,11 +70,11 @@ public class TestBanque {
     public void testComptes(){
 	//création d'un nouveau compte courant
 	Client c=new Client("Maxime","FRIEH");
-	Compte cc=new Compte(null,c);
+	Compte cc=new Compte(TypeCompte.CC,c);
 	//vérifier les paramètres du compte crée
 	verifier(c,cc.getTitulaire(),"Mauvais titulaire");
 	verifier(0.0,cc.getSolde(),"Mauvais solde de départ");
-	verifier(null,cc.getType(),"Mauvais type de compte");
+	verifier(TypeCompte.CC,cc.getType(),"Mauvais type de compte");
 	verifier(0,cc.getNumeroDeCompte(),"Mauvais numéro de compte");
 	verifier(0,c.comptes[0],"Mauvais numéro de compte dans le tableau");
 	verifier(1,c.nb_comptes,"Mauvais nombre de comptes ouverts");
@@ -87,14 +87,14 @@ public class TestBanque {
     public void testdepot(){
 	//création d'un nouveau compte courant
 	Client c=new Client("Maxime","FRIEH");
-	Compte cc=new Compte(null,c);
+	Compte cc=new Compte(TypeCompte.CC,c);
 	Compte lep=new Compte(TypeCompte.LEP,c);
 	Compte ldd=new Compte(TypeCompte.LDD,c);
 	Compte la=new Compte(TypeCompte.LA,c);
-	verifier(0,cc.depot(20000),"Mauvais montant retourné");
-	verifier(12300,lep.depot(20000),"Mauvais montant retourné");
-	verifier(14000,ldd.depot(20000),"Mauvais montant retourné");
-	verifier(4700,la.depot(20000),"Mauvais montant retourné");
+	verifier(0.0,cc.depot(20000),"Mauvais montant retourné");
+	verifier(12300.0,lep.depot(20000),"Mauvais montant retourné");
+	verifier(14000.0,ldd.depot(20000),"Mauvais montant retourné");
+	verifier(4700.0,la.depot(20000),"Mauvais montant retourné");
     }
     /**
      * test constructeurs des types de compte
