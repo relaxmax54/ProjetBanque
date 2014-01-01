@@ -7,7 +7,7 @@ public class Client{
     
     //attributs
     String nom,prenom;
-    int[] comptes;
+    Compte[] comptes;
     int nb_comptes;
     int impots;
     /**
@@ -23,7 +23,7 @@ public class Client{
 	this.prenom=p;
 	this.nb_comptes=0;
 	this.impots=-1;
-	this.comptes=new int[NB_MAX_COMPTES];
+	this.comptes=new Compte[NB_MAX_COMPTES];
     }
     /**
      * méthode exécutée par un client pour indiquer le montant
@@ -43,9 +43,10 @@ public class Client{
      */
     public void ouvreNouveauCompte(TypeCompte tc) {
 	if (tc!=null) {
-	    if ((tc.plafondRevenus()==Double.MAX_VALUE) || (impots!=-1 && (impots<=tc.plafondRevenus()))) && (nb_comptes<NB_MAX_COMPTES) ) {
-	    comptes[nb_comptes]=new Compte(tc,this);
-	    nb_comptes=nb_comptes+1;
+	    if ((tc.plafondRevenus()==Double.MAX_VALUE) || (impots!=-1 && (impots<=tc.plafondRevenus())) && (nb_comptes<NB_MAX_COMPTES)){
+		comptes[nb_comptes]=new Compte(tc,this);
+		nb_comptes=nb_comptes+1;
+	    }
 	}
     }
 }

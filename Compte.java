@@ -32,12 +32,11 @@ class Compte{
     public Compte(TypeCompte tc,Client cl){
 	//on incrémente le nombre total de comptes créés
 	TypeCompte.codeInterne+=1;
-	
+	this.titulaire=cl;
+	this.solde=0;	
 	if(cl!=null){
 	    if (cl.nb_comptes<Client.NB_MAX_COMPTES){
 		this.numeroDeCompte=TypeCompte.codeInterne;
-		cl.nb_comptes+=1;
-		cl.comptes[cl.nb_comptes-1]=TypeCompte.codeInterne;
 	    }
 	    if (tc==null)
 		this.type=TypeCompte.CC;
@@ -48,8 +47,6 @@ class Compte{
 	    this.type=null;
 	    this.numeroDeCompte=-1;
 	}
-	this.titulaire=cl;
-	this.solde=0;
     }
     /**
      * methode de depot d’argent sur le compte (jusqu’au plafond eventuel)

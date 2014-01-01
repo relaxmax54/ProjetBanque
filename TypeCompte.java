@@ -70,7 +70,7 @@ class TypeCompte{
      * impose a l’ouverture du compte
      * @return plafond de revenus (Double.MAX_VALUE si "illimite")
      */
-    public double montantMinimumRessources(){
+    public double plafondRevenus(){
 	if (this.accesCompte)
 	    return this.montantRessources;
 	else

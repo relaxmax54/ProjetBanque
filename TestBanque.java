@@ -30,19 +30,19 @@ public class TestBanque {
 	verifier(TypeCompte.tauxLA,TypeCompte.LA.taux, "taux incorrect");
 	verifier(true,TypeCompte.LA.plafondDepot, "Condition de plafond incorrecte");
 	verifier(TypeCompte.accesLA,TypeCompte.LA.accesCompte, "Condition d'accès incorrecte");
-	verifier(TypeCompte.ressourcesLA,TypeCompte.LA.montantMinimumRessources(), "montant de ressources incorrect");
+	verifier(TypeCompte.ressourcesLA,TypeCompte.LA.plafondRevenus(), "montant de ressources incorrect");
 	
 	verifier(0,TypeCompte.LDD.compteur,"compteur non initialisé");
 	verifier(TypeCompte.tauxLDD,TypeCompte.LDD.taux, "taux incorrect");
 	verifier(true,TypeCompte.LDD.plafondDepot, "Condition de pLDDfond incorrecte");
 	verifier(TypeCompte.accesLDD,TypeCompte.LDD.accesCompte, "Condition d'accès incorrecte");
-	verifier(TypeCompte.ressourcesLDD,TypeCompte.LDD.montantMinimumRessources(), "montant de ressources incorrect");
+	verifier(TypeCompte.ressourcesLDD,TypeCompte.LDD.plafondRevenus(), "montant de ressources incorrect");
 	
 	verifier(0,TypeCompte.LEP.compteur,"compteur non initialisé");
 	verifier(TypeCompte.tauxLEP,TypeCompte.LEP.taux, "taux incorrect");
 	verifier(true,TypeCompte.LEP.plafondDepot, "Condition de plafond incorrecte");
 	verifier(TypeCompte.accesLEP,TypeCompte.LEP.accesCompte, "Condition d'accès incorrecte");
-	verifier(TypeCompte.ressourcesLEP,TypeCompte.LEP.montantMinimumRessources(), "montant de ressources incorrect");
+	verifier(TypeCompte.ressourcesLEP,TypeCompte.LEP.plafondRevenus(), "montant de ressources incorrect");
     }
     /**
      * test montantMaximumPlafond
@@ -76,8 +76,6 @@ public class TestBanque {
 	verifier(0.0,cc.getSolde(),"Mauvais solde de départ");
 	verifier(TypeCompte.CC,cc.getType(),"Mauvais type de compte");
 	verifier(0,cc.getNumeroDeCompte(),"Mauvais numéro de compte");
-	verifier(0,c.comptes[0],"Mauvais numéro de compte dans le tableau");
-	verifier(1,c.nb_comptes,"Mauvais nombre de comptes ouverts");
 	// nombre de comptes courant existant a été incrémenté
 	verifier(0,TypeCompte.codeInterne,"Mauvaise incrémentation des comptes en général");
     }
@@ -127,9 +125,10 @@ public class TestBanque {
 
 	// vérifier création du compte si critères restectés
 	c.declarerImpots(700);
+	c.ouvreNouveauCompte(TypeCompte.LEP);
 	verifier(code+1,TypeCompte.codeInterne,"Absence d'incrémentation");
 	verifier(comptes+1,c.nb_comptes,"Compte non ajouté au tableau");
-	verifier(TypeCompte.LEP,c.getType(),"Mauvais type de compte ajouté");
+	verifier(TypeCompte.LEP,c.comptes[c.nb_comptes-1].getType(),"Mauvais type de compte ajouté");
     }
     /**
      * Lancement des tests
@@ -141,3 +140,4 @@ public class TestBanque {
 	LanceurProjet.lanceAvecInterface(new TestBanque());
     }
 }
+// impossible de verifier la référence des comptes enregstrés dans le tableau
