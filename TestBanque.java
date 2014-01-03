@@ -131,6 +131,18 @@ public class TestBanque {
 	verifier(TypeCompte.LEP,c.comptes[c.nb_comptes-1].getType(),"Mauvais type de compte ajouté");
     }
     /**
+     * test de la méthode retrouverCompte
+     */
+    public void test_8_retrouverCompte(){
+	//création d'un nouveau client
+	Client c=new Client("Maxime","FRIEH");
+	//création d'un nouveau compte
+	c.declarerImpots(700);
+	c.ouvreNouveauCompte(TypeCompte.LEP);
+	c.retrouverCompte(0).depot(2000);
+	verifier(2000.0,c.retrouverCompte(0).getSolde(),"Mouvement effectué sur un mauvais compte");
+    }
+    /**
      * Lancement des tests
      * 
      * @param args

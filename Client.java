@@ -43,10 +43,27 @@ public class Client{
      */
     public void ouvreNouveauCompte(TypeCompte tc) {
 	if (tc!=null) {
-	    if ((tc.plafondRevenus()==Double.MAX_VALUE) || (impots!=-1 && (impots<=tc.plafondRevenus())) && (nb_comptes<NB_MAX_COMPTES)){
-		comptes[nb_comptes]=new Compte(tc,this);
-		nb_comptes=nb_comptes+1;
-	    }
+	    if ((tc.plafondRevenus()==Double.MAX_VALUE) || (this.impots!=-1 && (this.impots<=tc.plafondRevenus())) && (this.nb_comptes<NB_MAX_COMPTES)){
+		this.comptes[nb_comptes]=new Compte(tc,this);
+		this.nb_comptes+=1;
+	   } 
 	}
+    }
+    /**
+     * methode qui recherche dans les comptes ouverts par un client
+     * le compte dont le numero est donne
+     * @param num_compte numero de compte cherche
+     * @return compte correspondant (null si le client n’a ouvert aucun compte
+     * ayant ce numero)
+     */
+    public Compte retrouverCompte(int num_numero){
+	int i=0;
+	while (i<this.nb_comptes-1 && comptes[i].getNumeroDeCompte()!=num_numero){
+	     i++;
+	}
+	if (i==nb_comptes)
+	    return null;
+	else
+	    return comptes[i];
     }
 }
