@@ -6,10 +6,10 @@ public class Client{
     final static int NB_MAX_COMPTES=10;
     
     //attributs
-    String nom,prenom;
-    Compte[] comptes;
-    int nb_comptes;
-    int impots;
+    public String nom,prenom;
+    public Compte[] comptes;
+    public int nb_comptes;
+    public int impots;
     /**
      * constructeur général : client dont le nom et le prénom sont donnés
      * il ne dispose d'aucun compte initialement, et le montant

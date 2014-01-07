@@ -26,15 +26,15 @@ class TypeCompte{
     
     //compteur de comptes général
     
-    public static int codeInterne =-1;
+    private static int codeInterne =-1;
     
     // attributs
-    public int compteur;
-    public double taux;
-    public boolean plafondDepot;
-    public double montantPlafond;	
-    public boolean accesCompte;
-    public double montantRessources;
+    private int compteur;
+    private double taux;
+    private boolean plafondDepot;
+    private double montantPlafond;	
+    private boolean accesCompte;
+    private double montantRessources;
 
     public static final TypeCompte LEP = new TypeCompte(TypeCompte.tauxLEP,true,TypeCompte.plafondLEP,TypeCompte.accesLEP,TypeCompte.ressourcesLEP);
     public static final TypeCompte LDD = new TypeCompte(TypeCompte.tauxLDD,true,TypeCompte.plafondLDD,TypeCompte.accesLDD,TypeCompte.ressourcesLDD);
@@ -52,7 +52,6 @@ class TypeCompte{
 	this.accesCompte		=a;
 	this.montantRessources		=r;
     }
-    
     /**
      * methode par laquelle un type de compte indique la somme
      * maximale qui peut etre depose
@@ -101,5 +100,37 @@ class TypeCompte{
 	    tableau[3]=null;
 	return tableau;
     }
-}
+    //méthodes utiles aux tests
 
+    //méthode qui permet de consulter le compteur
+    public int getcompteur(){
+	return this.compteur;
+    }
+    //méthode qui permet de consulter l'attribut taux
+    public double gettaux(){
+	return this.taux;
+    }
+    //méthode qui permet de consulter l'attribut accès compte
+    public boolean getaccesCompte(){
+    	return this.accesCompte;
+    }
+    //méthode qui permet de consulter l'attribut plafondDepot
+    public boolean getplafondDepot(){
+    	return this.plafondDepot;
+    }
+    //méthode qui permet d'incrémenter le compteur
+    public int inccompteur(){
+	this.compteur+=1;
+	return this.compteur;
+    }
+    //méthode qui permet de consulter le code interne des comptes
+    public static int getcodeInterne(){
+    	return codeInterne;
+    }   
+    //méthode qui permet d'incrémenter le code interne des comptes
+    public static int inccodeInterne(){
+	codeInterne+=1;
+    	return codeInterne;
+    }   
+}
+// déclarer les static final publics !

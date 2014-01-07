@@ -31,18 +31,18 @@ class Compte{
      */
     public Compte(TypeCompte tc,Client cl){
 	//on incrémente le nombre total de comptes créés
-	TypeCompte.codeInterne+=1;
+	TypeCompte.inccodeInterne();
 	this.titulaire=cl;
 	this.solde=0;	
 	if(cl!=null){
 	    if (cl.nb_comptes<Client.NB_MAX_COMPTES){
-		this.numeroDeCompte=TypeCompte.codeInterne;
+		this.numeroDeCompte=TypeCompte.getcodeInterne();
 	    }
 	    if (tc==null)
 		this.type=TypeCompte.CC;
 	    else
 		this.type=tc;
-	    this.type.compteur+=1;	    
+	    this.type.inccompteur();	    
 	}else{
 	    this.type=null;
 	    this.numeroDeCompte=-1;

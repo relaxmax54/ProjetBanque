@@ -26,22 +26,22 @@ public class TestBanque {
      * test constructeurs des types de compte
      */
     public void test_2_constructeurTypesDeComptes(){
-	verifier(0,TypeCompte.LA.compteur,"compteur non initialisé");
-	verifier(TypeCompte.tauxLA,TypeCompte.LA.taux, "taux incorrect");
-	verifier(true,TypeCompte.LA.plafondDepot, "Condition de plafond incorrecte");
-	verifier(TypeCompte.accesLA,TypeCompte.LA.accesCompte, "Condition d'accès incorrecte");
+	verifier(0,TypeCompte.LA.getcompteur(),"compteur non initialisé");
+	verifier(TypeCompte.tauxLA,TypeCompte.LA.gettaux(), "taux incorrect");
+	verifier(true,TypeCompte.LA.getplafondDepot(), "Condition de plafond incorrecte");
+	verifier(TypeCompte.accesLA,TypeCompte.LA.getaccesCompte(), "Condition d'accès incorrecte");
 	verifier(TypeCompte.ressourcesLA,TypeCompte.LA.plafondDeRevenus(), "montant de ressources incorrect");
 	
-	verifier(0,TypeCompte.LDD.compteur,"compteur non initialisé");
-	verifier(TypeCompte.tauxLDD,TypeCompte.LDD.taux, "taux incorrect");
-	verifier(true,TypeCompte.LDD.plafondDepot, "Condition de pLDDfond incorrecte");
-	verifier(TypeCompte.accesLDD,TypeCompte.LDD.accesCompte, "Condition d'accès incorrecte");
+	verifier(0,TypeCompte.LDD.getcompteur(),"compteur non initialisé");
+	verifier(TypeCompte.tauxLDD,TypeCompte.LDD.gettaux(), "taux incorrect");
+	verifier(true,TypeCompte.LDD.getplafondDepot(), "Condition de pLDDfond incorrecte");
+	verifier(TypeCompte.accesLDD,TypeCompte.LDD.getaccesCompte(), "Condition d'accès incorrecte");
 	verifier(TypeCompte.ressourcesLDD,TypeCompte.LDD.plafondDeRevenus(), "montant de ressources incorrect");
 	
-	verifier(0,TypeCompte.LEP.compteur,"compteur non initialisé");
-	verifier(TypeCompte.tauxLEP,TypeCompte.LEP.taux, "taux incorrect");
-	verifier(true,TypeCompte.LEP.plafondDepot, "Condition de plafond incorrecte");
-	verifier(TypeCompte.accesLEP,TypeCompte.LEP.accesCompte, "Condition d'accès incorrecte");
+	verifier(0,TypeCompte.LEP.getcompteur(),"compteur non initialisé");
+	verifier(TypeCompte.tauxLEP,TypeCompte.LEP.gettaux(), "taux incorrect");
+	verifier(true,TypeCompte.LEP.getplafondDepot(), "Condition de plafond incorrecte");
+	verifier(TypeCompte.accesLEP,TypeCompte.LEP.getaccesCompte(), "Condition d'accès incorrecte");
 	verifier(TypeCompte.ressourcesLEP,TypeCompte.LEP.plafondDeRevenus(), "montant de ressources incorrect");
     }
     /**
@@ -82,7 +82,7 @@ public class TestBanque {
 	verifier(TypeCompte.CC,cc.getType(),"Mauvais type de compte");
 	verifier(0,cc.getNumeroDeCompte(),"Mauvais numéro de compte");
 	// nombre de comptes courant existant a été incrémenté
-	verifier(0,TypeCompte.codeInterne,"Mauvaise incrémentation des comptes en général");
+	verifier(0,TypeCompte.getcodeInterne(),"Mauvaise incrémentation des comptes en général");
     }
     /**
      * test des méthodes pour le dép^ot ou le retrait d'argent sur un compte
@@ -113,25 +113,25 @@ public class TestBanque {
 	Client c=new Client("Maxime","FRIEH");
 	c.declarerImpots(800);
 	//récupération des données de base
-	int code=TypeCompte.codeInterne;
+	int code=TypeCompte.getcodeInterne();
 	int comptes = c.nb_comptes;
 
 	//tests
 
 	// vérifier bypass si tc null
 	c.ouvreNouveauCompte(null);
-	verifier(code,TypeCompte.codeInterne,"Incrémentation injustifiée");
+	verifier(code,TypeCompte.getcodeInterne(),"Incrémentation injustifiée");
 	verifier(comptes,c.nb_comptes,"Compte ajouté au tableau par erreur");
 
 	// vérifier bypass si critères non restectés
 	c.ouvreNouveauCompte(TypeCompte.LEP);
-	verifier(code,TypeCompte.codeInterne,"Incrémentation injustifiée");
+	verifier(code,TypeCompte.getcodeInterne(),"Incrémentation injustifiée");
 	verifier(comptes,c.nb_comptes,"Compte ajouté au tableau par erreur");
 
 	// vérifier création du compte si critères restectés
 	c.declarerImpots(700);
 	c.ouvreNouveauCompte(TypeCompte.LEP);
-	verifier(code+1,TypeCompte.codeInterne,"Absence d'incrémentation");
+	verifier(code+1,TypeCompte.getcodeInterne(),"Absence d'incrémentation");
 	verifier(comptes+1,c.nb_comptes,"Compte non ajouté au tableau");
 	verifier(TypeCompte.LEP,c.comptes[c.nb_comptes-1].getType(),"Mauvais type de compte ajouté");
     }
