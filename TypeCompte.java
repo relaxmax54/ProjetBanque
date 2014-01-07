@@ -8,21 +8,22 @@
 */
 class TypeCompte{
     //caractéristiques réglementaires des différents livrets
-    static final double tauxLA	=1.75;
-    static final double tauxLDD	=1.75;
-    static final double tauxLEP	=2.25;
+    //attributs déclarés publics car non modifiables
+    public static final double tauxLA	=1.75;
+    public static final double tauxLDD	=1.75;
+    public static final double tauxLEP	=2.25;
     
-    static final double plafondLA	=15300;
-    static final double plafondLDD	=6000;
-    static final double plafondLEP	=7700;
+    public static final double plafondLA	=15300;
+    public static final double plafondLDD	=6000;
+    public static final double plafondLEP	=7700;
     
-    static final boolean accesLA	=false;
-    static final boolean accesLDD	=false;
-    static final boolean accesLEP	=true;
+    public static final boolean accesLA	=false;
+    public static final boolean accesLDD	=false;
+    public static final boolean accesLEP	=true;
     
-    static final double ressourcesLA	=Double.MAX_VALUE;
-    static final double ressourcesLDD	=Double.MAX_VALUE;
-    static final double ressourcesLEP	=757;
+    public static final double ressourcesLA	=Double.MAX_VALUE;
+    public static final double ressourcesLDD	=Double.MAX_VALUE;
+    public static final double ressourcesLEP	=757;
     
     //compteur de comptes général
     
@@ -133,4 +134,4 @@ class TypeCompte{
     	return codeInterne;
     }   
 }
-// déclarer les static final publics !
+
