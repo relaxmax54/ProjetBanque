@@ -43,7 +43,7 @@ public class Client{
      */
     public void ouvreNouveauCompte(TypeCompte tc) {
 	if (tc!=null) {
-	    if ((tc.plafondRevenus()==Double.MAX_VALUE) || (this.impots!=-1 && (this.impots<=tc.plafondRevenus())) && (this.nb_comptes<NB_MAX_COMPTES)){
+	    if ((tc.plafondDeRevenus()==Double.MAX_VALUE) || (this.impots!=-1 && (this.impots<=tc.plafondDeRevenus())) && (this.nb_comptes<NB_MAX_COMPTES)){
 		this.comptes[nb_comptes]=new Compte(tc,this);
 		this.nb_comptes+=1;
 	   } 

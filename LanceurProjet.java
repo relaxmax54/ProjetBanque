@@ -758,5 +758,4 @@ public class LanceurProjet {
 		};
 		Collections.sort(listeMethodes, compMethode);
 	}
-
 }

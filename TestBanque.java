@@ -12,7 +12,7 @@ public class TestBanque {
     /**
      * test constructeur avec param
      */
-    public void test_1_Client() {
+    public void test_1_constructeurClient() {
 
 	Client c = new Client("Maxime","FRIEH");
  	
@@ -25,40 +25,45 @@ public class TestBanque {
     /**
      * test constructeurs des types de compte
      */
-    public void test_2_TypesDeComptes(){
+    public void test_2_constructeurTypesDeComptes(){
 	verifier(0,TypeCompte.LA.compteur,"compteur non initialisé");
 	verifier(TypeCompte.tauxLA,TypeCompte.LA.taux, "taux incorrect");
 	verifier(true,TypeCompte.LA.plafondDepot, "Condition de plafond incorrecte");
 	verifier(TypeCompte.accesLA,TypeCompte.LA.accesCompte, "Condition d'accès incorrecte");
-	verifier(TypeCompte.ressourcesLA,TypeCompte.LA.plafondRevenus(), "montant de ressources incorrect");
+	verifier(TypeCompte.ressourcesLA,TypeCompte.LA.plafondDeRevenus(), "montant de ressources incorrect");
 	
 	verifier(0,TypeCompte.LDD.compteur,"compteur non initialisé");
 	verifier(TypeCompte.tauxLDD,TypeCompte.LDD.taux, "taux incorrect");
 	verifier(true,TypeCompte.LDD.plafondDepot, "Condition de pLDDfond incorrecte");
 	verifier(TypeCompte.accesLDD,TypeCompte.LDD.accesCompte, "Condition d'accès incorrecte");
-	verifier(TypeCompte.ressourcesLDD,TypeCompte.LDD.plafondRevenus(), "montant de ressources incorrect");
+	verifier(TypeCompte.ressourcesLDD,TypeCompte.LDD.plafondDeRevenus(), "montant de ressources incorrect");
 	
 	verifier(0,TypeCompte.LEP.compteur,"compteur non initialisé");
 	verifier(TypeCompte.tauxLEP,TypeCompte.LEP.taux, "taux incorrect");
 	verifier(true,TypeCompte.LEP.plafondDepot, "Condition de plafond incorrecte");
 	verifier(TypeCompte.accesLEP,TypeCompte.LEP.accesCompte, "Condition d'accès incorrecte");
-	verifier(TypeCompte.ressourcesLEP,TypeCompte.LEP.plafondRevenus(), "montant de ressources incorrect");
+	verifier(TypeCompte.ressourcesLEP,TypeCompte.LEP.plafondDeRevenus(), "montant de ressources incorrect");
     }
     /**
-     * test montantMaximumPlafond
+     * test plafondDeDepot
      */
-    public void test_3_MontantMaximumPlafond(){
-	verifier(TypeCompte.plafondLA,TypeCompte.LA.montantMaximumPlafond(), "montant plafond incorrect");
-	verifier(TypeCompte.plafondLDD,TypeCompte.LDD.montantMaximumPlafond(), "montant plafond incorrect");
-	verifier(TypeCompte.plafondLEP,TypeCompte.LEP.montantMaximumPlafond(), "montant plafond incorrect");
-	verifier(Double.MAX_VALUE,TypeCompte.CC.montantMaximumPlafond(), "montant plafond incorrect");
+    public void test_3_plafonds(){
+	//test des plafonds de somme à déposer sur les comptes
+	verifier(TypeCompte.plafondLA,TypeCompte.LA.plafondDeDepot(), "montant plafond incorrect");
+	verifier(TypeCompte.plafondLDD,TypeCompte.LDD.plafondDeDepot(), "montant plafond incorrect");
+	verifier(TypeCompte.plafondLEP,TypeCompte.LEP.plafondDeDepot(), "montant plafond incorrect");
+	verifier(Double.MAX_VALUE,TypeCompte.CC.plafondDeDepot(), "montant plafond incorrect");
+	//test des ressources à ne pas dépasser pour accéder aux comptes
+	verifier(TypeCompte.ressourcesLA,TypeCompte.LA.plafondDeRevenus(), "montant plafond incorrect");
+	verifier(TypeCompte.ressourcesLDD,TypeCompte.LDD.plafondDeRevenus(), "montant plafond incorrect");
+	verifier(TypeCompte.ressourcesLEP,TypeCompte.LEP.plafondDeRevenus(), "montant plafond incorrect");
+	verifier(Double.MAX_VALUE,TypeCompte.CC.plafondDeRevenus(), "montant plafond incorrect");
     }
-
     /**
      *test tableau des comptes potentiels
      *@param montant_a_deposer : montant à déposer sur le compte
      */
-    public void test_4_Tableau(){
+    public void test_4_tableauDeComptesPotentiels(){
 	verifier(null,TypeCompte.tableauDesComptesPotentiels(-1)[0],"Mauvais compte");
 	verifier(TypeCompte.LEP,TypeCompte.tableauDesComptesPotentiels(5500)[1],"Mauvais compte");
 	verifier(null,TypeCompte.tableauDesComptesPotentiels(8000)[2],"Mauvais compte");
@@ -67,7 +72,7 @@ public class TestBanque {
     /**
      * test constructeurs de comptes
      */	
-    public void test_5_Comptes(){
+    public void test_5_constructeurComptes(){
 	//création d'un nouveau compte courant
 	Client c=new Client("Maxime","FRIEH");
 	Compte cc=new Compte(TypeCompte.CC,c);
@@ -82,7 +87,7 @@ public class TestBanque {
     /**
      * test des méthodes pour le dép^ot ou le retrait d'argent sur un compte
      */
-    public void test_6_MouvementsDeCompte(){
+    public void test_6_mouvementsDeCompte(){
 	//création d'un nouveau compte courant
 	Client c=new Client("Maxime","FRIEH");
 	Compte cc=new Compte(TypeCompte.CC,c);
@@ -152,4 +157,3 @@ public class TestBanque {
 	LanceurProjet.lanceAvecInterface(new TestBanque());
     }
 }
-// impossible de verifier la référence des comptes enregstrés dans le tableau

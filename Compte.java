@@ -55,13 +55,13 @@ class Compte{
      * au client)
      */
     public double depot(double somme){
-	if (this.solde+somme<=this.type.montantMaximumPlafond()){
+	if (this.solde+somme<=this.type.plafondDeDepot()){
 	    this.solde+=somme;
 	    return 0;
 	}else{
 	    double ancienSolde=this.solde;
-	    this.solde=this.type.montantMaximumPlafond();
-	    return somme-this.type.montantMaximumPlafond()-ancienSolde;
+	    this.solde=this.type.plafondDeDepot();
+	    return somme-this.type.plafondDeDepot()-ancienSolde;
 	}
     }
     /**

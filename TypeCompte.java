@@ -58,7 +58,7 @@ class TypeCompte{
      * maximale qui peut etre depose
      * @return plafond de depot (Double.MAX_VALUE si "illimite")
      */
-    public double montantMaximumPlafond(){
+    public double plafondDeDepot(){
 	if (this.plafondDepot)
 	    return this.montantPlafond;
 	else		
@@ -70,7 +70,7 @@ class TypeCompte{
      * impose a l’ouverture du compte
      * @return plafond de revenus (Double.MAX_VALUE si "illimite")
      */
-    public double plafondRevenus(){
+    public double plafondDeRevenus(){
 	if (this.accesCompte)
 	    return this.montantRessources;
 	else
@@ -87,20 +87,19 @@ class TypeCompte{
     public static TypeCompte[] tableauDesComptesPotentiels(double montant_a_deposer){
 	TypeCompte[] tableau = new TypeCompte[4];
 	tableau[0]=null; //quelque soit le montant à déposer, le compte courant est toujours éligible
-	if(LEP.montantMaximumPlafond()>=montant_a_deposer || montant_a_deposer==-1)
+	if(LEP.plafondDeDepot()>=montant_a_deposer || montant_a_deposer==-1)
 	    tableau[1]=LEP;
 	else
 	    tableau[1]=null;
-	if(LDD.montantMaximumPlafond()>=montant_a_deposer || montant_a_deposer==-1)
+	if(LDD.plafondDeDepot()>=montant_a_deposer || montant_a_deposer==-1)
 	    tableau[2]=LDD;
 	else
 	    tableau[2]=null;
-	if(LA.montantMaximumPlafond()>=montant_a_deposer || montant_a_deposer==-1)
+	if(LA.plafondDeDepot()>=montant_a_deposer || montant_a_deposer==-1)
 	    tableau[3]=LA;
 	else
 	    tableau[3]=null;
 	return tableau;
     }
 }
-// quel intéret pour montantMinimumRessources et montantMaximumPlafond ?
-// attributs TypeCompte à mettre en final ?
+
